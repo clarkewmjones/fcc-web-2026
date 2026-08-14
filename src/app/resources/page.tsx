@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getRecentPosts } from "@/lib/reachingforth";
 
 export const metadata: Metadata = {
   title: "Resources | Faith Community Church",
@@ -13,34 +14,8 @@ const BULLETINS = [
   { date: "July 5, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-07-05-fccstl.pdf" },
 ];
 
-const POSTS = [
-  {
-    title: "Pressing Onward: 30 Years of God's Faithfulness",
-    date: "July 2026",
-    excerpt: "As we celebrate this milestone, I am reminded that every step of the journey has been ordered by the Lord...",
-    url: "https://www.reachingforth.blogspot.com",
-  },
-  {
-    title: "Why the Bible Still Changes Everything",
-    date: "June 2026",
-    excerpt: "In an age of information overload, the Word of God remains the one source that truly transforms from the inside out...",
-    url: "https://www.reachingforth.blogspot.com",
-  },
-  {
-    title: "The Power of a Praying Church",
-    date: "May 2026",
-    excerpt: "Prayer is not a last resort — it is the first strategy. Here's what 30 years of corporate prayer has taught us...",
-    url: "https://www.reachingforth.blogspot.com",
-  },
-  {
-    title: "Questions Asked by the Oxford Holy Club",
-    date: "April 2026",
-    excerpt: "John and Charles Wesley, George Whitefield, and their friends met at Oxford University.",
-    url: "https://reachingforth.blogspot.com/2026/04/questions-asked-by-oxford-holy-club.html",
-  },
-];
-
-export default function ResourcesPage() {
+export default async function ResourcesPage() {
+  const posts = await getRecentPosts();
   return (
     <main className="min-h-[60vh] bg-cream">
       <div className="bg-navy px-6 pt-13 pb-11">
@@ -114,14 +89,14 @@ export default function ResourcesPage() {
               Reflections, teaching, and encouragement from Pastor Rick Jones at <em>Reaching Forth</em>.
             </p>
             <div className="flex flex-col border border-line">
-              {POSTS.map((p, i) => (
+              {posts.map((p, i) => (
                 <a
-                  key={p.title}
+                  key={p.url}
                   href={p.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`block bg-white px-6 py-5 transition-colors hover:bg-warm-gray ${
-                    i < POSTS.length - 1 ? "border-b border-line" : ""
+                    i < posts.length - 1 ? "border-b border-line" : ""
                   }`}
                 >
                   <div className="mb-1.5 font-work text-[10px] font-bold tracking-[0.15em] text-gold">{p.date}</div>
