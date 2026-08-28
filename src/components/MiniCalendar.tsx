@@ -42,11 +42,11 @@ export default function MiniCalendar({ year, month }: { year: number; month: num
           return (
             <div
               key={i}
-              className={`flex aspect-square items-center justify-center rounded-sm font-work text-[13px] ${
+              className={`flex aspect-square items-center justify-center rounded-sm font-work text-[13px] transition-colors duration-150 ${
                 hasEvent ? "font-bold" : "font-normal"
               } ${
                 isHighlight
-                  ? "bg-fcc-blue text-white"
+                  ? "bg-fcc-blue text-white hover:bg-[#e8f0fc] hover:text-fcc-blue active:bg-[#e8f0fc] active:text-fcc-blue"
                   : hasEvent
                     ? "bg-[#e8f0fc] text-fcc-blue"
                     : day
