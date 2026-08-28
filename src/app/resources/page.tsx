@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 const BULLETINS = [
   { date: "August 23, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-08-23-fccstl.pdf" },
+  { date: "August 23, 2026", title: "Faith Crusaders Chicago", pdf: "/bulletins/2026-08-23-chicago.pdf" },
   { date: "August 16, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-08-16-fccstl.pdf" },
   { date: "August 9, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-08-09-fccstl.pdf" },
   { date: "July 26, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-07-26-fccstl.pdf" },
@@ -45,7 +46,7 @@ export default async function ResourcesPage() {
             </p>
             <div className="flex flex-col gap-3">
               {BULLETINS.map((b) => (
-                <div key={b.date} className="flex items-center gap-4 border border-line bg-white px-5 py-4">
+                <div key={b.pdf} className="flex items-center gap-4 border border-line bg-white px-5 py-4">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-navy">
                     <svg width="18" height="22" viewBox="0 0 18 22" fill="none">
                       <path
