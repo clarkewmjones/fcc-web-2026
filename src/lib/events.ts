@@ -1,4 +1,5 @@
 export type ChurchEvent = {
+  year: number;
   month: number;
   day: number;
   dayEnd: number | null;
@@ -11,6 +12,7 @@ export type ChurchEvent = {
 
 export const ALL_EVENTS: ChurchEvent[] = [
   {
+    year: 2026,
     month: 8,
     day: 2,
     dayEnd: null,
@@ -21,6 +23,7 @@ export const ALL_EVENTS: ChurchEvent[] = [
     highlight: true,
   },
   {
+    year: 2026,
     month: 8,
     day: 8,
     dayEnd: null,
@@ -31,6 +34,7 @@ export const ALL_EVENTS: ChurchEvent[] = [
     highlight: false,
   },
   {
+    year: 2026,
     month: 8,
     day: 16,
     dayEnd: null,
@@ -41,6 +45,7 @@ export const ALL_EVENTS: ChurchEvent[] = [
     highlight: false,
   },
   {
+    year: 2026,
     month: 8,
     day: 30,
     dayEnd: null,
@@ -51,6 +56,7 @@ export const ALL_EVENTS: ChurchEvent[] = [
     highlight: false,
   },
   {
+    year: 2026,
     month: 9,
     day: 6,
     dayEnd: null,
@@ -61,6 +67,7 @@ export const ALL_EVENTS: ChurchEvent[] = [
     highlight: true,
   },
   {
+    year: 2026,
     month: 9,
     day: 13,
     dayEnd: null,
@@ -71,6 +78,7 @@ export const ALL_EVENTS: ChurchEvent[] = [
     highlight: false,
   },
   {
+    year: 2026,
     month: 9,
     day: 16,
     dayEnd: 20,
@@ -81,3 +89,17 @@ export const ALL_EVENTS: ChurchEvent[] = [
     highlight: true,
   },
 ];
+
+// Returns events that haven't finished yet, so the events page
+// automatically drops past events without needing a manual edit.
+export function getUpcomingEvents(events: ChurchEvent[] = ALL_EVENTS): ChurchEvent[] {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return events.filter((event) => {
+    const endDay = event.dayEnd ?? event.day;
+    const eventEnd = new Date(event.year, event.month - 1, endDay);
+    eventEnd.setHours(23, 59, 59, 999);
+    return eventEnd >= today;
+  });
+}

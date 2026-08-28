@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import MiniCalendar from "@/components/MiniCalendar";
-import { ALL_EVENTS } from "@/lib/events";
+import { getUpcomingEvents } from "@/lib/events";
 
 export const metadata: Metadata = {
   title: "Events & Calendar | Faith Community Church",
   description: "Stay connected to what's happening at FCC. All are welcome.",
 };
 
+// Recheck periodically so events drop off the list automatically once they've passed.
+export const revalidate = 3600;
+
 const MONTH_NAMES = ["", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
 export default function EventsPage() {
+  const upcomingEvents = getUpcomingEvents();
   return (
     <main className="min-h-[60vh] bg-cream">
       <div className="bg-navy px-6 pt-13 pb-11">
@@ -40,7 +44,7 @@ export default function EventsPage() {
           ALL UPCOMING EVENTS
         </h2>
         <div className="flex flex-col gap-4">
-          {ALL_EVENTS.map((event) => (
+          {upcomingEvents.map((event) => (
             <div
               key={event.title}
               className={`flex overflow-hidden bg-white ${
