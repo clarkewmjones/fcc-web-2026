@@ -157,13 +157,9 @@ export default function HomePage() {
             {upcomingEvents.map((event) => (
               <div
                 key={event.title}
-                className={`flex flex-col transition-transform duration-150 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] ${
-                  event.highlight ? "border-2 border-fcc-blue bg-navy" : "border border-line bg-white"
-                }`}
+                className="group flex flex-col border-2 border-line bg-white transition-all duration-200 hover:-translate-y-1 hover:border-fcc-blue hover:bg-navy hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)]"
               >
-                <div
-                  className={`flex items-center gap-3 px-5 py-4 ${event.highlight ? "bg-fcc-blue" : "bg-navy"}`}
-                >
+                <div className="flex items-center gap-3 bg-navy px-5 py-4 transition-colors duration-200 group-hover:bg-fcc-blue">
                   <div className="min-w-11 text-center">
                     <div className="font-work text-[10px] font-bold tracking-[0.2em] text-white/60">
                       {MONTH_ABBR[event.month]}
@@ -177,25 +173,13 @@ export default function HomePage() {
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col gap-2 px-5 pt-5 pb-6">
-                  <h3
-                    className={`font-montserrat text-[15px] leading-[1.3] font-bold ${
-                      event.highlight ? "text-white" : "text-navy"
-                    }`}
-                  >
+                  <h3 className="font-montserrat text-[15px] leading-[1.3] font-bold text-navy transition-colors duration-200 group-hover:text-white">
                     {event.title}
                   </h3>
-                  <p
-                    className={`flex-1 text-[13px] leading-[1.65] ${
-                      event.highlight ? "text-white/70" : "text-muted"
-                    }`}
-                  >
+                  <p className="flex-1 text-[13px] leading-[1.65] text-muted transition-colors duration-200 group-hover:text-white/70">
                     {event.desc}
                   </p>
-                  <div
-                    className={`mt-1 font-work text-[11px] font-semibold tracking-[0.05em] ${
-                      event.highlight ? "text-gold" : "text-fcc-blue"
-                    }`}
-                  >
+                  <div className="mt-1 font-work text-[11px] font-semibold tracking-[0.05em] text-fcc-blue transition-colors duration-200 group-hover:text-gold">
                     📅 {event.time}
                   </div>
                 </div>
