@@ -1,9 +1,6 @@
 import Link from "next/link";
 
 const TICKER_ITEMS = [
-  "⭐ AUG 2 — ONWARD Sunday · 30th Anniversary Vision · All Services",
-  "⭐ AUG 8 — Men's Ministry Breakfast Fellowship · 8:00 AM",
-  "⭐ AUG 16 — Back to School Sunday · 11:00 AM · Supplies & Prayer for Students",
   "⭐ AUG 30 — ROUND UP SUNDAY · Get out your western wear!",
   "⭐ SEPT 6 — LABOR DAY WEEKEND · 30th Anniversary Jubilee Month Begins",
   "⭐ SEPT 13 — GRANDPARENTS SUNDAY · Special Gift & Presentation",
