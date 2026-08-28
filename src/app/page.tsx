@@ -1,4 +1,10 @@
 import Link from "next/link";
+import { getUpcomingEvents } from "@/lib/events";
+
+// Recheck periodically so events drop off automatically once they've passed.
+export const revalidate = 3600;
+
+const MONTH_ABBR = ["", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
 const TICKER_ITEMS = [
   "⭐ AUG 30 — ROUND UP SUNDAY · Get out your western wear!",
@@ -37,46 +43,8 @@ const GLAD_CARDS = [
   },
 ];
 
-const UPCOMING_EVENTS = [
-  {
-    month: "AUG",
-    day: "2",
-    title: "ONWARD Sunday — 30th Anniversary Vision",
-    desc: "We will launch our 30th Anniversary Campaign. To the glory of God we have reached this ministry milestone. Join us for special messages, volunteer opportunities, and intercessory prayer.",
-    time: "Sunday · All Services",
-    tag: "ONWARD",
-    highlight: true,
-  },
-  {
-    month: "AUG",
-    day: "8",
-    title: "Men's Ministry Breakfast Fellowship",
-    desc: "Men young and older are welcome to this delicious time of great food and prayer at the Parsonage.",
-    time: "Saturday · 8:00 AM",
-    tag: "MEN'S MINISTRY",
-    highlight: false,
-  },
-  {
-    month: "AUG",
-    day: "16",
-    title: "Back to School Sunday",
-    desc: "School supplies and a special Pastoral prayer for all students and teachers as they return to the classroom.",
-    time: "Sunday · 11:00 AM",
-    tag: "BACK TO SCHOOL",
-    highlight: false,
-  },
-  {
-    month: "SEP",
-    day: "16–20",
-    title: "ONWARD — 30th Anniversary Week",
-    desc: "Five nights of worship, testimony, and celebration with special guests Evangelist Nathan Kline, Bishop Marsh Jones, and The Singing Jewetts. Wed–Sun · Services at 7:00 PM nightly.",
-    time: "Sept 16–20 · Wed–Sun",
-    tag: "30 YEARS",
-    highlight: true,
-  },
-];
-
 export default function HomePage() {
+  const upcomingEvents = getUpcomingEvents().slice(0, 4);
   return (
     <main>
       {/* Scrolling announcement ticker */}
@@ -186,7 +154,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {UPCOMING_EVENTS.map((event) => (
+            {upcomingEvents.map((event) => (
               <div
                 key={event.title}
                 className={`flex flex-col transition-transform duration-150 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] ${
@@ -197,8 +165,12 @@ export default function HomePage() {
                   className={`flex items-center gap-3 px-5 py-4 ${event.highlight ? "bg-fcc-blue" : "bg-navy"}`}
                 >
                   <div className="min-w-11 text-center">
-                    <div className="font-work text-[10px] font-bold tracking-[0.2em] text-white/60">{event.month}</div>
-                    <div className="font-montserrat text-[28px] leading-none font-extrabold text-white">{event.day}</div>
+                    <div className="font-work text-[10px] font-bold tracking-[0.2em] text-white/60">
+                      {MONTH_ABBR[event.month]}
+                    </div>
+                    <div className="font-montserrat text-[28px] leading-none font-extrabold text-white">
+                      {event.dayEnd ? `${event.day}–${event.dayEnd}` : event.day}
+                    </div>
                   </div>
                   <span className="bg-black/25 px-2 py-0.5 font-work text-[9px] font-bold tracking-[0.15em] text-gold">
                     {event.tag}
