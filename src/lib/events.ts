@@ -71,6 +71,16 @@ export const ALL_EVENTS: ChurchEvent[] = [
   {
     year: 2026,
     month: 9,
+    day: 12,
+    dayEnd: null,
+    title: "Pastor Rick's 68th Birthday Celebration",
+    desc: "",
+    time: "",
+    tag: "BIRTHDAY",
+  },
+  {
+    year: 2026,
+    month: 9,
     day: 13,
     dayEnd: null,
     title: "Grandparents Sunday",

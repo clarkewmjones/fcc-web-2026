@@ -64,14 +64,16 @@ export default function EventsPage() {
                   <span className="bg-navy px-2 py-0.5 font-work text-[9px] font-bold tracking-[0.15em] text-gold">
                     {event.tag}
                   </span>
-                  <span className="font-work text-xs text-muted">{event.time}</span>
+                  {event.time && <span className="font-work text-xs text-muted">{event.time}</span>}
                 </div>
                 <div className="mb-1.5 font-montserrat text-base font-bold tracking-[0.02em] text-navy">
                   {event.title}
                 </div>
-                <div className="font-work text-sm leading-[1.6] font-light whitespace-pre-line text-muted">
-                  {event.desc}
-                </div>
+                {event.desc && (
+                  <div className="font-work text-sm leading-[1.6] font-light whitespace-pre-line text-muted">
+                    {event.desc}
+                  </div>
+                )}
               </div>
             </div>
           ))}

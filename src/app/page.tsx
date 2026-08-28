@@ -176,12 +176,16 @@ export default function HomePage() {
                   <h3 className="font-montserrat text-[15px] leading-[1.3] font-bold text-navy transition-colors duration-200 group-hover:text-white">
                     {event.title}
                   </h3>
-                  <p className="flex-1 text-[13px] leading-[1.65] text-muted transition-colors duration-200 group-hover:text-white/70">
-                    {event.desc}
-                  </p>
-                  <div className="mt-1 font-work text-[11px] font-semibold tracking-[0.05em] text-fcc-blue transition-colors duration-200 group-hover:text-gold">
-                    📅 {event.time}
-                  </div>
+                  {event.desc && (
+                    <p className="flex-1 text-[13px] leading-[1.65] text-muted transition-colors duration-200 group-hover:text-white/70">
+                      {event.desc}
+                    </p>
+                  )}
+                  {event.time && (
+                    <div className="mt-1 font-work text-[11px] font-semibold tracking-[0.05em] text-fcc-blue transition-colors duration-200 group-hover:text-gold">
+                      📅 {event.time}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
