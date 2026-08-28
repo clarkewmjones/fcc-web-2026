@@ -7,8 +7,15 @@ export type ChurchEvent = {
   desc: string;
   time: string;
   tag: string;
-  highlight: boolean;
 };
+
+// Stable, URL/DOM-safe id for an event, used to link a calendar day to its card in the list.
+export function eventSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 export const ALL_EVENTS: ChurchEvent[] = [
   {
@@ -20,7 +27,6 @@ export const ALL_EVENTS: ChurchEvent[] = [
     desc: "We will launch our 30th Anniversary Campaign. To the glory of God we have reached this ministry milestone. Join us for special messages, volunteer opportunities, and intercessory prayer.",
     time: "Sunday · All Services",
     tag: "ONWARD",
-    highlight: true,
   },
   {
     year: 2026,
@@ -31,7 +37,6 @@ export const ALL_EVENTS: ChurchEvent[] = [
     desc: "Men young and older are welcome to this delicious time of great food and prayer at the Parsonage.",
     time: "Saturday · 8:00 AM",
     tag: "MEN'S MINISTRY",
-    highlight: false,
   },
   {
     year: 2026,
@@ -42,7 +47,6 @@ export const ALL_EVENTS: ChurchEvent[] = [
     desc: "School supplies and a special Pastoral prayer for all students and teachers as they return to the classroom.",
     time: "Sunday · 11:00 AM",
     tag: "BACK TO SCHOOL",
-    highlight: false,
   },
   {
     year: 2026,
@@ -53,7 +57,6 @@ export const ALL_EVENTS: ChurchEvent[] = [
     desc: "Get out your western wear and we are going to round up all the strays!",
     time: "Sunday · 11:00 AM",
     tag: "ROUND UP",
-    highlight: false,
   },
   {
     year: 2026,
@@ -64,7 +67,6 @@ export const ALL_EVENTS: ChurchEvent[] = [
     desc: "The beginning of our 30th Anniversary Jubilee month. Join us as we celebrate God's faithfulness over three decades of ministry.",
     time: "Sunday · All Services",
     tag: "30 YEARS",
-    highlight: true,
   },
   {
     year: 2026,
@@ -75,7 +77,6 @@ export const ALL_EVENTS: ChurchEvent[] = [
     desc: "We have a special gift and presentation for all the Grandparents attending. Honor the pillars of faith in our families and community.",
     time: "Sunday · 11:00 AM",
     tag: "SPECIAL",
-    highlight: false,
   },
   {
     year: 2026,
@@ -86,7 +87,6 @@ export const ALL_EVENTS: ChurchEvent[] = [
     desc: "Special Guests: Evangelist Nathan Kline · Bishop Marsh Jones · The Singing Jewetts\n\nWed 9/16 · 7:00 PM — REMEMBERING: 30 Years of God's Faithfulness\nThu 9/17 · 7:00 PM — RENEWING: A fresh commitment to witnessing\nFri 9/18 · 7:00 PM — REKINDLING: A Night of Homecoming\nSat 9/19 · 6:00 PM — REACHING: Touching our Community\nSun 9/20 · 11:00 AM — CELEBRATING: God's great faithfulness\nSun 9/20 · 6:00 PM — ONWARD! The way forward into our 31st year",
     time: "Sept 16–20 · Wed–Sun",
     tag: "30 YEARS",
-    highlight: true,
   },
 ];
 
