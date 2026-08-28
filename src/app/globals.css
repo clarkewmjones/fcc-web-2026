@@ -66,6 +66,14 @@ body {
   animation-play-state: paused;
 }
 
+.event-card-flash {
+  border-color: var(--color-fcc-blue);
+}
+
+.event-card-flash .event-date-block {
+  background-color: var(--color-fcc-blue);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

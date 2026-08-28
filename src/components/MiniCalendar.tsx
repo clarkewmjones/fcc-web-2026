@@ -1,9 +1,19 @@
-import { ALL_EVENTS } from "@/lib/events";
+"use client";
+
+import { ALL_EVENTS, eventSlug, getUpcomingEvents, type ChurchEvent } from "@/lib/events";
 
 const MONTH_NAMES = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December",
 ];
+
+function goToEvent(event: ChurchEvent) {
+  const el = document.getElementById(`event-${eventSlug(event.title)}`);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "center" });
+  el.classList.add("event-card-flash");
+  window.setTimeout(() => el.classList.remove("event-card-flash"), 1500);
+}
 
 export default function MiniCalendar({ year, month }: { year: number; month: number }) {
   const firstDay = new Date(year, month - 1, 1).getDay();
@@ -13,14 +23,13 @@ export default function MiniCalendar({ year, month }: { year: number; month: num
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
   while (cells.length % 7 !== 0) cells.push(null);
 
-  const eventDays = new Set<number>();
-  const highlightDays = new Set<number>();
-  ALL_EVENTS.filter((e) => e.month === month).forEach((e) => {
+  const monthEvents = ALL_EVENTS.filter((e) => e.year === year && e.month === month);
+  const upcomingMonthEvents = getUpcomingEvents(monthEvents);
+
+  const eventByDay = new Map<number, ChurchEvent>();
+  upcomingMonthEvents.forEach((e) => {
     const end = e.dayEnd ?? e.day;
-    for (let d = e.day; d <= end; d++) {
-      eventDays.add(d);
-      if (e.highlight) highlightDays.add(d);
-    }
+    for (let d = e.day; d <= end; d++) eventByDay.set(d, e);
   });
 
   return (
@@ -37,21 +46,26 @@ export default function MiniCalendar({ year, month }: { year: number; month: num
       </div>
       <div className="grid grid-cols-7 gap-0.5">
         {cells.map((day, i) => {
-          const hasEvent = day !== null && eventDays.has(day);
-          const isHighlight = day !== null && highlightDays.has(day);
+          const event = day !== null ? eventByDay.get(day) : undefined;
+
+          if (event) {
+            return (
+              <button
+                key={i}
+                type="button"
+                onClick={() => goToEvent(event)}
+                className="flex aspect-square items-center justify-center rounded-sm bg-navy font-work text-[13px] font-bold text-white transition-colors duration-150 hover:bg-fcc-blue active:bg-fcc-blue"
+              >
+                {day}
+              </button>
+            );
+          }
+
           return (
             <div
               key={i}
-              className={`flex aspect-square items-center justify-center rounded-sm font-work text-[13px] transition-colors duration-150 ${
-                hasEvent ? "font-bold" : "font-normal"
-              } ${
-                isHighlight
-                  ? "bg-fcc-blue text-white hover:bg-[#e8f0fc] hover:text-fcc-blue active:bg-[#e8f0fc] active:text-fcc-blue"
-                  : hasEvent
-                    ? "bg-[#e8f0fc] text-fcc-blue"
-                    : day
-                      ? "text-ink"
-                      : "text-transparent"
+              className={`flex aspect-square items-center justify-center rounded-sm font-work text-[13px] font-normal ${
+                day ? "text-ink" : "text-transparent"
               }`}
             >
               {day ?? ""}
@@ -61,12 +75,8 @@ export default function MiniCalendar({ year, month }: { year: number; month: num
       </div>
       <div className="mt-3.5 flex flex-wrap gap-4">
         <div className="flex items-center gap-1.5">
-          <div className="h-3 w-3 rounded-sm bg-fcc-blue" />
-          <span className="font-work text-[11px] text-muted">Featured</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div className="h-3 w-3 rounded-sm border border-fcc-blue bg-[#e8f0fc]" />
-          <span className="font-work text-[11px] text-muted">Event</span>
+          <div className="h-3 w-3 rounded-sm bg-navy" />
+          <span className="font-work text-[11px] text-muted">Event · click to view</span>
         </div>
       </div>
     </div>

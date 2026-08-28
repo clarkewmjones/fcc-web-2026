@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import MiniCalendar from "@/components/MiniCalendar";
-import { getUpcomingEvents } from "@/lib/events";
+import { eventSlug, getUpcomingEvents } from "@/lib/events";
 
 export const metadata: Metadata = {
   title: "Events & Calendar | Faith Community Church",
@@ -47,9 +47,10 @@ export default function EventsPage() {
           {upcomingEvents.map((event) => (
             <div
               key={event.title}
-              className="group flex overflow-hidden border-2 border-line bg-white transition-colors duration-200 hover:border-fcc-blue"
+              id={`event-${eventSlug(event.title)}`}
+              className="group flex scroll-mt-24 overflow-hidden border-2 border-line bg-white transition-colors duration-200 hover:border-fcc-blue"
             >
-              <div className="flex min-w-20 flex-col items-center justify-center bg-navy px-6 py-5 transition-colors duration-200 group-hover:bg-fcc-blue">
+              <div className="event-date-block flex min-w-20 flex-col items-center justify-center bg-navy px-6 py-5 transition-colors duration-200 group-hover:bg-fcc-blue">
                 <div className="font-work text-[10px] font-bold tracking-[0.2em] text-white/60">
                   {MONTH_NAMES[event.month]}
                 </div>
