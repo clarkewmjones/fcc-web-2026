@@ -14,6 +14,7 @@ const BULLETINS = [
   { date: "July 19, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-07-19-fccstl.pdf" },
   { date: "July 12, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-07-12-fccstl.pdf" },
   { date: "July 5, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-07-05-fccstl.pdf" },
+  { date: "June 18, 2023", title: "Sunday Morning Bulletin", pdf: "/bulletins/2023-06-18-fccstl.pdf" },
 ];
 
 export default async function ResourcesPage() {
