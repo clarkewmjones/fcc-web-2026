@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 };
 
 const BULLETINS = [
+  { date: "August 30, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-08-30-fccstl.pdf" },
   { date: "August 23, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-08-23-fccstl.pdf" },
   { date: "August 16, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-08-16-fccstl.pdf" },
   { date: "August 9, 2026", title: "Sunday Morning Bulletin", pdf: "/bulletins/2026-08-09-fccstl.pdf" },
