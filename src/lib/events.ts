@@ -98,6 +98,16 @@ export const ALL_EVENTS: ChurchEvent[] = [
     time: "Sept 16–20 · Wed–Sun",
     tag: "30 YEARS",
   },
+  {
+    year: 2026,
+    month: 9,
+    day: 27,
+    dayEnd: null,
+    title: "Hear Andrew Durst Preaching",
+    desc: "",
+    time: "Sunday · 11:00 AM",
+    tag: "GUEST SPEAKER",
+  },
 ];
 
 // Returns events that haven't finished yet, so the events page
