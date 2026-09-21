@@ -1,19 +1,26 @@
 import Link from "next/link";
-import { getUpcomingEvents } from "@/lib/events";
+import { getUpcomingEvents, type ChurchEvent } from "@/lib/events";
 
 // Recheck periodically so events drop off automatically once they've passed.
 export const revalidate = 3600;
 
 const MONTH_ABBR = ["", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
-const TICKER_ITEMS = [
-  "⭐ AUG 30 — ROUND UP SUNDAY · Get out your western wear!",
-  "⭐ SEPT 6 — LABOR DAY WEEKEND · 30th Anniversary Jubilee Month Begins",
-  "⭐ SEPT 13 — GRANDPARENTS SUNDAY · Special Gift & Presentation",
-  "⭐ SEPT 16–20 — ONWARD 30th Anniversary Week · Special Guests: Evangelist Nathan Kline · Bishop Marsh Jones · The Singing Jewetts",
+// These two never drop off the ticker — only the event items rotate.
+const RECURRING_TICKER_ITEMS = [
   "⭐ EVERY SUNDAY — Adult Bible Study 10:15 AM · Worship & Sunday School 11:00 AM · Praise & Preaching 6:00 PM",
   "⭐ EVERY WEDNESDAY — The Glad Hour · 7:00 PM · 2969 N Lindbergh Blvd · St. Ann, MO",
-].join("          ✦          ");
+];
+
+// Builds one ticker line from a calendar event, so the ticker always reflects
+// whatever is in ALL_EVENTS without needing to be edited by hand.
+function formatEventTicker(event: ChurchEvent): string {
+  const dateStr = event.dayEnd
+    ? `${MONTH_ABBR[event.month]} ${event.day}–${event.dayEnd}`
+    : `${MONTH_ABBR[event.month]} ${event.day}`;
+  const subtitle = event.desc.split("\n")[0].trim() || event.time;
+  return `⭐ ${dateStr} — ${event.title.toUpperCase()}${subtitle ? ` · ${subtitle}` : ""}`;
+}
 
 const SERVICE_TIMES = [
   { label: "SUNDAY WORSHIP", time: "11:00 AM" },
@@ -45,12 +52,15 @@ const GLAD_CARDS = [
 
 export default function HomePage() {
   const upcomingEvents = getUpcomingEvents().slice(0, 4);
+  const tickerItems = [...upcomingEvents.map(formatEventTicker), ...RECURRING_TICKER_ITEMS].join(
+    "          ✦          "
+  );
   return (
     <main>
       {/* Scrolling announcement ticker */}
       <div className="overflow-hidden border-b-2 border-gold bg-fcc-blue py-2.5 whitespace-nowrap">
         <div className="ticker-track font-work text-[13px] font-semibold tracking-[0.06em] text-white">
-          {TICKER_ITEMS}
+          {tickerItems}
         </div>
       </div>
 
