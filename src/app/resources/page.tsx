@@ -49,7 +49,7 @@ export default async function ResourcesPage() {
               Download the current Sunday bulletin for the order of service, scripture readings, and announcements.
             </p>
             <div className="flex flex-col gap-3">
-              {BULLETINS.map((b) => (
+              {BULLETINS.slice(0, 7).map((b) => (
                 <div key={b.pdf} className="flex items-center gap-4 border border-line bg-white px-5 py-4">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-navy">
                     <svg width="18" height="22" viewBox="0 0 18 22" fill="none">
