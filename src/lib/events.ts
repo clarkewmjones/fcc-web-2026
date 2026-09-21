@@ -108,6 +108,16 @@ export const ALL_EVENTS: ChurchEvent[] = [
     time: "Sunday · 11:00 AM",
     tag: "GUEST SPEAKER",
   },
+  {
+    year: 2026,
+    month: 10,
+    day: 4,
+    dayEnd: null,
+    title: "Guest Speaker Gilash — Ministry to Muslims",
+    desc: "Special guest speaker from India, ministering to Muslims.",
+    time: "Sunday · 11:00 AM",
+    tag: "GUEST SPEAKER",
+  },
 ];
 
 // Returns events that haven't finished yet, so the events page
