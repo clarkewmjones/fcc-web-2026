@@ -13,6 +13,14 @@ export const revalidate = 3600;
 
 const MONTH_NAMES = ["", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
+// Plain text lines, not calendar-square highlights — keeps the dark blue
+// boxes and callout cards reserved for the dated special events below.
+const RECURRING_SCHEDULE = [
+  "Every Sunday — Adult Bible Class 10:15 AM · Worship & Sunday School 11:00 AM · Evening Praise 6:00 PM",
+  "Every Tuesday — Hour of Power: Chicago · 6:00 PM",
+  "Every Wednesday — The Glad Hour: St. Louis · 7:00 PM",
+];
+
 export default function EventsPage() {
   const upcomingEvents = getUpcomingEvents();
   return (
@@ -35,6 +43,13 @@ export default function EventsPage() {
         <h2 className="mb-6 font-montserrat text-lg font-extrabold tracking-[0.08em] text-navy">
           SEPTEMBER — OCTOBER 2026
         </h2>
+        <div className="mb-8 flex flex-col gap-1.5 border-l-2 border-gold pl-4">
+          {RECURRING_SCHEDULE.map((line) => (
+            <div key={line} className="font-work text-[13px] font-medium text-muted">
+              {line}
+            </div>
+          ))}
+        </div>
         <div className="mb-15 grid grid-cols-1 gap-5 sm:grid-cols-2">
           <MiniCalendar year={2026} month={9} />
           <MiniCalendar year={2026} month={10} />
