@@ -1,25 +1,25 @@
 import type { Metadata } from "next";
+import { DAILY_SCRIPTURE_READINGS } from "@/lib/dailyScripture";
 
 export const metadata: Metadata = {
   title: "Become | Faith Community Church",
   description: "Growing in faith is a daily journey — in the Word, in prayer, and in how we love and serve those around us.",
 };
 
+const BIBLE_READING_SECTION = {
+  label: "GROW IN GOD'S WORD",
+  title: "Daily Bible Reading",
+  color: "bg-navy",
+  accentText: "text-gold",
+  icon: (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c9972a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+    </svg>
+  ),
+};
+
 const SECTIONS = [
-  {
-    label: "GROW IN GOD'S WORD",
-    title: "Daily Bible Reading",
-    color: "bg-navy",
-    accentText: "text-gold",
-    body: "Content coming soon — check back for daily scripture passages, reading plans, and devotionals to guide your walk with God.",
-    note: "Daily Bible reading plans, scripture highlights, and Pastor Rick's weekly devotional thoughts will be posted here.",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c9972a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-      </svg>
-    ),
-  },
   {
     label: "TALK WITH GOD",
     title: "Daily Prayer",
@@ -69,6 +69,46 @@ export default function BecomePage() {
       </div>
 
       <div className="mx-auto max-w-[800px] px-6 py-14">
+        <div>
+          <div className="mb-16">
+            <div className="mb-6 flex items-center gap-4">
+              <div
+                className={`flex h-13 w-13 shrink-0 items-center justify-center ${BIBLE_READING_SECTION.color}`}
+              >
+                {BIBLE_READING_SECTION.icon}
+              </div>
+              <div>
+                <div
+                  className={`mb-1 font-work text-[10px] font-bold tracking-[0.2em] ${BIBLE_READING_SECTION.accentText}`}
+                >
+                  {BIBLE_READING_SECTION.label}
+                </div>
+                <h2 className="font-playfair text-[28px] font-bold text-navy">{BIBLE_READING_SECTION.title}</h2>
+              </div>
+            </div>
+            <div className="flex flex-col gap-6">
+              {DAILY_SCRIPTURE_READINGS.map((r) => (
+                <div key={r.date} className="border border-line bg-white px-7 py-6">
+                  <div className="mb-1 font-work text-[11px] font-bold tracking-[0.15em] text-gold">
+                    {r.weekday.toUpperCase()}, {r.date.toUpperCase()}
+                  </div>
+                  <h3 className="mb-1 font-playfair text-xl font-bold text-navy">{r.title}</h3>
+                  <div className="mb-4 font-work text-sm font-semibold text-muted">{r.reference}</div>
+                  <div className="font-work text-base leading-[1.9] text-muted">
+                    {r.verses.map((v) => (
+                      <p key={v.num} className="mb-2">
+                        <span className="mr-1 align-super text-xs font-bold text-gold">{v.num}</span>
+                        {v.text}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="mb-16 border-t border-line" />
+        </div>
+
         {SECTIONS.map((s, i) => (
           <div key={s.title}>
             <div className="mb-16">
