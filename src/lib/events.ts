@@ -118,6 +118,16 @@ export const ALL_EVENTS: ChurchEvent[] = [
     time: "Sunday · 11:00 AM",
     tag: "GUEST SPEAKER",
   },
+  {
+    year: 2026,
+    month: 11,
+    day: 6,
+    dayEnd: null,
+    title: "Inter-Church Holiness Convention — Missouri",
+    desc: "David Fulton, Moderator · Dan Cope, Preaching · Dan and Beverly Cope, Singing.\n\nFor more information contact Stephen Cassady, 570-658-1030.",
+    time: "Friday · 7:00 PM",
+    tag: "CONVENTION",
+  },
 ];
 
 // Returns events that haven't finished yet, so the events page
