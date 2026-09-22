@@ -64,6 +64,20 @@ const MINISTRIES: {
     day: "As Announced",
   },
   {
+    category: "adults",
+    name: "Pray Vote Stand",
+    age: "Adults",
+    desc: "PRAY VOTE STAND is an opportunity for God's people to:",
+    list: [
+      "Seek God's will and direction for our nation and those who are elected to lead",
+      "Encourage Christians to vote and to participate in the election process",
+      "Strengthen virtue voters to stand up and to stand out for truth in the public square",
+    ],
+    day: "As Announced",
+    logo: "/images/logo-pray-vote-stand.webp",
+    logoHeight: 140,
+  },
+  {
     category: "serve",
     name: "Outreach",
     age: "Evangelism & Outreach",
