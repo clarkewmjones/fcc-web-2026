@@ -113,7 +113,7 @@ export const ALL_EVENTS: ChurchEvent[] = [
     month: 10,
     day: 4,
     dayEnd: null,
-    title: "Guest Speaker Gilash — Ministry to Muslims",
+    title: "Guest Speaker Girish Kumar — Ministry to Muslims",
     desc: "Special guest speaker from India, ministering to Muslims.",
     time: "Sunday · 11:00 AM",
     tag: "GUEST SPEAKER",
