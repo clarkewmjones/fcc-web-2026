@@ -65,20 +65,12 @@ export default function HomePage() {
       </div>
 
       {/* Hero */}
-      <section className="relative flex min-h-[80vh] items-end justify-center overflow-hidden bg-black">
+      <section className="relative aspect-[5481/3181] w-full overflow-hidden bg-black">
         <img
           src="/images/hero-congregation.jpg"
-          alt="Faith Community Church congregation gathered in worship"
-          className="absolute inset-0 h-full w-full object-cover object-center brightness-125 contrast-105"
+          alt="Each One. Reach One. Teach One. — Faith Community Church"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/45" />
-        <div className="relative z-10 w-full px-6 pb-12 text-center">
-          <img
-            src="/images/onward-30-year-logo.png"
-            alt="ONWARD! 30 Years — Faith Community Church"
-            className="mx-auto inline-block w-[90%] max-w-[1000px] drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
-          />
-        </div>
       </section>
 
       {/* Service times strip */}
