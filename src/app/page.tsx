@@ -6,10 +6,11 @@ export const revalidate = 3600;
 
 const MONTH_ABBR = ["", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
-// These two never drop off the ticker — only the event items rotate.
+// These never drop off the ticker — only the event items rotate.
 const RECURRING_TICKER_ITEMS = [
-  "⭐ EVERY SUNDAY — Adult Bible Study 10:15 AM · Worship & Sunday School 11:00 AM · Praise & Preaching 6:00 PM",
-  "⭐ EVERY WEDNESDAY — The Glad Hour · 7:00 PM · 2969 N Lindbergh Blvd · St. Ann, MO",
+  "⭐ EVERY SUNDAY — Adult Bible Class 10:15 AM · Worship & Sunday School 11:00 AM · Evening Praise 6:00 PM",
+  "⭐ EVERY TUESDAY — HOUR OF POWER: CHICAGO · 6:00 PM",
+  "⭐ EVERY WEDNESDAY — THE GLAD HOUR: ST. LOUIS · 7:00 PM",
 ];
 
 // Builds one ticker line from a calendar event, so the ticker always reflects
