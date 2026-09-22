@@ -65,7 +65,7 @@ export default function HomePage() {
       </div>
 
       {/* Hero */}
-      <section className="relative aspect-[5481/3181] w-full overflow-hidden bg-black">
+      <section className="relative aspect-[2000/1036] w-full overflow-hidden bg-black">
         <img
           src="/images/hero-congregation.jpg"
           alt="Each One. Reach One. Teach One. — Faith Community Church"
