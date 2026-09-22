@@ -33,11 +33,11 @@ export default function EventsPage() {
 
       <div className="mx-auto max-w-[1100px] px-6 py-13">
         <h2 className="mb-6 font-montserrat text-lg font-extrabold tracking-[0.08em] text-navy">
-          AUGUST — SEPTEMBER 2026
+          SEPTEMBER — OCTOBER 2026
         </h2>
         <div className="mb-15 grid grid-cols-1 gap-5 sm:grid-cols-2">
-          <MiniCalendar year={2026} month={8} />
           <MiniCalendar year={2026} month={9} />
+          <MiniCalendar year={2026} month={10} />
         </div>
 
         <h2 className="mb-6 font-montserrat text-lg font-extrabold tracking-[0.08em] text-navy">
