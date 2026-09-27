@@ -120,6 +120,16 @@ export const ALL_EVENTS: ChurchEvent[] = [
   },
   {
     year: 2026,
+    month: 10,
+    day: 11,
+    dayEnd: null,
+    title: "Hear Lucas Schaefer Preaching",
+    desc: "",
+    time: "Sunday · 11:00 AM",
+    tag: "GUEST SPEAKER",
+  },
+  {
+    year: 2026,
     month: 11,
     day: 1,
     dayEnd: null,
