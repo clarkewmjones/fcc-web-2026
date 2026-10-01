@@ -66,10 +66,10 @@ export default function HomePage() {
       </div>
 
       {/* Hero */}
-      <section className="relative aspect-[2000/964] w-full overflow-hidden bg-black">
+      <section className="relative aspect-[1453/697] w-full overflow-hidden bg-black">
         <img
           src="/images/hero-congregation.jpg"
-          alt="Each One. Reach One. Teach One. — Faith Community Church"
+          alt="The Majesty of Creation — special guest speaker Dr. Joel Brown, PhD, Cornell Univ., Creation Research Society, 11am Sunday, October 4, 2026"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
       </section>
