@@ -114,8 +114,8 @@ export const ALL_EVENTS: ChurchEvent[] = [
     day: 4,
     dayEnd: null,
     title: "Each One. Reach One. Teach One. — Launch Sunday",
-    desc: "",
-    time: "Sunday · All Services",
+    desc: "Special Guest: Dr. Joel Brown, PhD Cornell University, Creation Research Society.\n\n\"Creation is more than intricate design, it is beautiful artwork.\"",
+    time: "Sunday · 11:00 AM",
     tag: "LAUNCH",
   },
   {
