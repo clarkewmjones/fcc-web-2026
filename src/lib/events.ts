@@ -148,6 +148,16 @@ export const ALL_EVENTS: ChurchEvent[] = [
     time: "Friday · 7:00 PM",
     tag: "CONVENTION",
   },
+  {
+    year: 2026,
+    month: 11,
+    day: 21,
+    dayEnd: null,
+    title: "FCC Annual Thanksgiving Dinner",
+    desc: "Five Oaks Community Center · Olivette, MO\n\nEveryone is welcome to this wonderful Family of God tradition. Great Food. Great Fun. Great Fellowship. Invite your friends and family.",
+    time: "Saturday · 6:00 PM",
+    tag: "FELLOWSHIP",
+  },
 ];
 
 // Returns events that haven't finished yet, so the events page
