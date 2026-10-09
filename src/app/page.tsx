@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getUpcomingEvents, type ChurchEvent } from "@/lib/events";
+import { HERO } from "@/lib/hero";
 
 // Recheck periodically so events drop off automatically once they've passed.
 export const revalidate = 3600;
@@ -66,12 +68,16 @@ export default function HomePage() {
       </div>
 
       {/* Hero */}
-      <section className="relative aspect-[2000/958] w-full overflow-hidden bg-black">
-        <img
-          src="/images/hero-congregation.jpg"
-          alt="FCC welcomes Lucas Schaefer — Sunday, October 11, 2026, 11am and 6pm"
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
+      <section className="bg-black">
+        <Link href={HERO.href} className="block">
+          <Image
+            src={HERO.image}
+            alt={HERO.alt}
+            priority
+            sizes="100vw"
+            className="h-auto w-full"
+          />
+        </Link>
       </section>
 
       {/* Service times strip */}
