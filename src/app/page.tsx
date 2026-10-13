@@ -68,17 +68,55 @@ export default function HomePage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-black">
-        <Link href={HERO.href} className="block">
+      {HERO.video ? (
+        <section className="relative isolate flex aspect-video max-h-[80vh] min-h-[420px] w-full items-center justify-center overflow-hidden bg-black">
           <Image
             src={HERO.image}
-            alt={HERO.alt}
+            alt=""
+            fill
             priority
             sizes="100vw"
-            className="h-auto w-full"
+            className="object-cover"
           />
-        </Link>
-      </section>
+          <video
+            className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+            src={HERO.video.src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/35 to-black/60" />
+          <div className="relative z-10 px-6 text-center text-white">
+            <h1 className="font-garamond text-[clamp(44px,8vw,104px)] leading-[1] font-medium italic drop-shadow-[0_2px_18px_rgba(0,0,0,0.55)]">
+              {HERO.video.headline}
+            </h1>
+            <p className="mt-4 font-work text-[clamp(13px,1.6vw,18px)] font-semibold tracking-[0.12em] uppercase drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]">
+              {HERO.video.subline}
+            </p>
+            <Link
+              href={HERO.href}
+              className="mt-7 inline-block bg-fcc-blue px-7 py-3 font-work text-[13px] font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-fcc-blue-dark"
+            >
+              {HERO.video.ctaLabel}
+            </Link>
+          </div>
+        </section>
+      ) : (
+        <section className="bg-black">
+          <Link href={HERO.href} className="block">
+            <Image
+              src={HERO.image}
+              alt={HERO.alt}
+              priority
+              sizes="100vw"
+              className="h-auto w-full"
+            />
+          </Link>
+        </section>
+      )}
 
       {/* Service times strip */}
       <section className="bg-fcc-blue px-6 py-3.5">
