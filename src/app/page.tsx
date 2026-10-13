@@ -61,7 +61,7 @@ export default function HomePage() {
   return (
     <main>
       {/* Scrolling announcement ticker */}
-      <div className="overflow-hidden border-b-2 border-gold bg-fcc-blue py-2.5 whitespace-nowrap">
+      <div className="ticker-bar overflow-hidden border-b-2 border-gold bg-fcc-blue py-2.5 whitespace-nowrap">
         <div className="ticker-track font-work text-[16px] font-semibold tracking-[0.06em] text-white">
           {tickerItems}
         </div>
