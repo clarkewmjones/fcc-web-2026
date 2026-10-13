@@ -1,6 +1,6 @@
 // To change the homepage hero: drop the new graphic into src/assets/hero/,
 // then update the three lines below (image, alt, href).
-import image from "@/assets/hero/2026-10-12-lighten-up-thanksgiving.jpg";
+import image from "@/assets/hero/2026-10-12-lighten-up-thanksgiving-v2.jpg";
 
 export const HERO = {
   image,
