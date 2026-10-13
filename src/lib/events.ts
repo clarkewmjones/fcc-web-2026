@@ -158,6 +158,16 @@ export const ALL_EVENTS: ChurchEvent[] = [
     time: "Saturday · 6:00 PM",
     tag: "FELLOWSHIP",
   },
+  {
+    year: 2026,
+    month: 12,
+    day: 20,
+    dayEnd: null,
+    title: "Christmas Sunday",
+    desc: "Celebrate the Birth of our Savior with the Family of God.",
+    time: "Sunday · All Services",
+    tag: "CHRISTMAS",
+  },
 ];
 
 // Returns events that haven't finished yet, so the events page
