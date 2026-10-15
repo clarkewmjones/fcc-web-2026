@@ -19,7 +19,7 @@ export const HERO: Hero = {
   video: {
     src: "/videos/2026-10-12-come-be-refreshed.mp4",
     headline: "Come. Be Refreshed.",
-    subline: "Sundays 11:00 AM  ·  2969 N Lindbergh Blvd, St. Ann",
+    subline: "Sundays 11:00 AM & 6:00 PM\n2969 N Lindbergh Blvd, St. Ann, MO 63074",
     ctaLabel: "Plan Your Visit",
   },
 };

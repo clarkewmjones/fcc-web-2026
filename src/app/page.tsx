@@ -93,7 +93,7 @@ export default function HomePage() {
             <h1 className="font-garamond text-[clamp(44px,8vw,104px)] leading-[1] font-medium italic drop-shadow-[0_2px_18px_rgba(0,0,0,0.55)]">
               {HERO.video.headline}
             </h1>
-            <p className="mt-4 font-work text-[clamp(13px,1.6vw,18px)] font-semibold tracking-[0.12em] uppercase drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]">
+            <p className="mt-4 font-work text-[clamp(13px,1.6vw,18px)] leading-relaxed font-semibold tracking-[0.05em] whitespace-pre-line uppercase sm:tracking-[0.12em] drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]">
               {HERO.video.subline}
             </p>
             <Link
