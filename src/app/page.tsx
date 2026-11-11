@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getUpcomingEvents, type ChurchEvent } from "@/lib/events";
-import { HERO } from "@/lib/hero";
+import { HERO, getActiveBanner } from "@/lib/hero";
 
 // Recheck periodically so events drop off automatically once they've passed.
 export const revalidate = 3600;
@@ -58,6 +58,7 @@ export default function HomePage() {
   const tickerItems = [...upcomingEvents.map(formatEventTicker), ...RECURRING_TICKER_ITEMS].join(
     "          ✦          "
   );
+  const banner = getActiveBanner();
   return (
     <main>
       {/* Scrolling announcement ticker */}
@@ -66,6 +67,18 @@ export default function HomePage() {
           {tickerItems}
         </div>
       </div>
+
+      {banner && (
+        <section className="bg-[#fcfaf6]">
+          <Image
+            src={banner.image}
+            alt={banner.alt}
+            priority
+            sizes="100vw"
+            className="mx-auto h-auto max-h-[80vh] w-full object-contain"
+          />
+        </section>
+      )}
 
       {/* Hero */}
       {HERO.video ? (

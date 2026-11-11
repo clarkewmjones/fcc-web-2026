@@ -12,6 +12,22 @@ type Hero = {
   video?: { src: string; headline: string; subline: string; ctaLabel: string };
 };
 
+// Optional banner shown above the hero until the end of `until` (YYYY-MM-DD, Central time), then it
+// disappears on its own. To retire it early or reuse the slot, edit/delete BANNER.
+import bannerImage from "@/assets/hero/2026-11-11-honoring-veterans.jpg";
+
+export const BANNER: { image: StaticImageData; alt: string; until: string } | null = {
+  image: bannerImage,
+  alt: "Honoring American Veterans — 11th day of the 11th month, with heartfelt gratitude. Faith Community Church, St. Ann, MO, www.fccstlouis.org",
+  until: "2026-11-12",
+};
+
+export function getActiveBanner() {
+  if (!BANNER) return null;
+  const today = new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
+  return today <= BANNER.until ? BANNER : null;
+}
+
 export const HERO: Hero = {
   image,
   alt: "Come. Be Refreshed. — a forest stream at Faith Community Church",
