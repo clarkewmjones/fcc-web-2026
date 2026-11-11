@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getUpcomingEvents, type ChurchEvent } from "@/lib/events";
-import { HERO, getActiveBanner } from "@/lib/hero";
+import { HERO, getActiveBanner, getActivePromo } from "@/lib/hero";
 
 // Recheck periodically so events drop off automatically once they've passed.
 export const revalidate = 3600;
@@ -59,6 +59,7 @@ export default function HomePage() {
     "          ✦          "
   );
   const banner = getActiveBanner();
+  const promo = getActivePromo();
   return (
     <main>
       {/* Scrolling announcement ticker */}
@@ -78,6 +79,39 @@ export default function HomePage() {
             className="mx-auto h-auto max-h-[80vh] w-full object-contain"
           />
         </section>
+      )}
+
+      {promo && (
+        <Link
+          href={promo.href}
+          className="group block border-b-2 border-gold bg-[#4a2509] px-6 py-4 text-white transition-colors hover:bg-[#5c2f0c]"
+        >
+          <div className="mx-auto flex max-w-[1100px] items-center gap-4 sm:gap-6">
+            <Image
+              src={promo.thumb}
+              alt=""
+              width={promo.thumbSize[0]}
+              height={promo.thumbSize[1]}
+              sizes="80px"
+              className="h-[92px] w-auto shrink-0 border border-white/40 shadow-md"
+            />
+            <div className="min-w-0 flex-1">
+              <div className="font-work text-[10px] font-bold tracking-[0.2em] text-gold-light uppercase sm:text-[11px]">
+                {promo.eyebrow}
+              </div>
+              <div className="font-playfair text-[clamp(20px,3.2vw,30px)] leading-tight font-bold">{promo.title}</div>
+              <div className="mt-0.5 font-work text-[12px] leading-snug text-white/85 sm:text-[14px]">
+                {promo.detail}
+              </div>
+            </div>
+            <span className="hidden shrink-0 bg-gold px-5 py-3 font-work text-[12px] font-bold tracking-[0.08em] text-white uppercase transition-colors group-hover:bg-gold-light sm:inline-block">
+              {promo.cta} →
+            </span>
+            <span aria-hidden="true" className="shrink-0 text-2xl leading-none text-gold-light sm:hidden">
+              ›
+            </span>
+          </div>
+        </Link>
       )}
 
       {/* Hero */}

@@ -7,6 +7,8 @@ export type ChurchEvent = {
   desc: string;
   time: string;
   tag: string;
+  href?: string;
+  hrefLabel?: string;
 };
 
 // Stable, URL/DOM-safe id for an event, used to link a calendar day to its card in the list.
@@ -154,9 +156,11 @@ export const ALL_EVENTS: ChurchEvent[] = [
     day: 21,
     dayEnd: null,
     title: "FCC Annual Thanksgiving Dinner",
-    desc: "Five Oaks Community Center · Olivette, MO\n\nEveryone is welcome to this wonderful Family of God tradition. Great Food. Great Fun. Great Fellowship. Invite your friends and family.",
+    desc: "Five Oaks Community Center · 1200 N. Warson Road, Olivette, MO 63132\n\nEveryone is welcome to this wonderful Family of God tradition. Great Food. Great Fun. Great Fellowship. Invite your friends and family.",
     time: "Saturday · 6:00 PM",
     tag: "FELLOWSHIP",
+    href: "/thanksgiving",
+    hrefLabel: "VIEW & SHARE THE INVITATION",
   },
   {
     year: 2026,

@@ -31,6 +31,7 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.fccstlouis.org"),
   title: "Faith Community Church | St. Louis, MO",
   description:
     "Faith Community Church — 30 years of Believe, Belong, Become in St. Louis, MO. Join us Sundays for worship, Sunday School, and evening praise.",

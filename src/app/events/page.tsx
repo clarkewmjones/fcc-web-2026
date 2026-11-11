@@ -105,6 +105,14 @@ export default function EventsPage() {
                     {event.desc}
                   </div>
                 )}
+                {event.href && (
+                  <Link
+                    href={event.href}
+                    className="mt-3 inline-block font-work text-[13px] font-bold tracking-[0.06em] text-fcc-blue hover:underline"
+                  >
+                    {event.hrefLabel ?? "DETAILS"} →
+                  </Link>
+                )}
               </div>
             </div>
           ))}

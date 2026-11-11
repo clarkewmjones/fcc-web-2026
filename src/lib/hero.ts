@@ -22,10 +22,38 @@ export const BANNER: { image: StaticImageData; alt: string; until: string } | nu
   until: "2026-11-12",
 };
 
-export function getActiveBanner() {
-  if (!BANNER) return null;
+function isActive(until: string) {
   const today = new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
-  return today <= BANNER.until ? BANNER : null;
+  return today <= until;
+}
+
+export function getActiveBanner() {
+  return BANNER && isActive(BANNER.until) ? BANNER : null;
+}
+
+// Slim promo strip shown above the hero until the end of `until`, linking to a details page.
+export const PROMO: {
+  until: string;
+  href: string;
+  thumb: string;
+  thumbSize: [number, number];
+  eyebrow: string;
+  title: string;
+  detail: string;
+  cta: string;
+} | null = {
+  until: "2026-11-21",
+  href: "/thanksgiving",
+  thumb: "/flyers/thanksgiving-dinner-2026.jpg",
+  thumbSize: [1459, 1868],
+  eyebrow: "Everyone is invited",
+  title: "Thanksgiving Dinner",
+  detail: "Saturday, Nov 21 · 6pm · Five Oaks Community Center, Olivette",
+  cta: "View & share the invitation",
+};
+
+export function getActivePromo() {
+  return PROMO && isActive(PROMO.until) ? PROMO : null;
 }
 
 export const HERO: Hero = {
