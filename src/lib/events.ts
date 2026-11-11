@@ -160,6 +160,16 @@ export const ALL_EVENTS: ChurchEvent[] = [
   },
   {
     year: 2026,
+    month: 11,
+    day: 22,
+    dayEnd: null,
+    title: "Heritage Sunday",
+    desc: "\"Ask for the old paths where is the good way!\"\n\nBring antiques, wear century old styles, lighting with kerosene lamps and more.",
+    time: "Sunday · All Services",
+    tag: "HERITAGE",
+  },
+  {
+    year: 2026,
     month: 12,
     day: 20,
     dayEnd: null,
