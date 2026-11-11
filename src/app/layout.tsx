@@ -35,6 +35,24 @@ export const metadata: Metadata = {
   title: "Faith Community Church | St. Louis, MO",
   description:
     "Faith Community Church — 30 years of Believe, Belong, Become in St. Louis, MO. Join us Sundays for worship, Sunday School, and evening praise.",
+  openGraph: {
+    type: "website",
+    siteName: "Faith Community Church",
+    title: "Faith Community Church | St. Louis, MO",
+    description: "Come. Be Refreshed. Join us Sundays at 11:00 AM & 6:00 PM in St. Ann, MO.",
+    images: [
+      {
+        url: "/og/site-share.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Faith Community Church — Come. Be Refreshed. Sundays 11:00 AM & 6:00 PM, St. Ann, MO",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og/site-share.jpg"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
