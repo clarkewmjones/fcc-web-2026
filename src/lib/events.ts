@@ -170,6 +170,16 @@ export const ALL_EVENTS: ChurchEvent[] = [
   },
   {
     year: 2026,
+    month: 11,
+    day: 29,
+    dayEnd: null,
+    title: "First Sunday of Advent",
+    desc: "\"JOY! JOY! JOY!\"\n\n\"I bring you tidings of exceeding great joy!\" — our Advent theme this year.",
+    time: "Sunday · All Services",
+    tag: "ADVENT",
+  },
+  {
+    year: 2026,
     month: 12,
     day: 20,
     dayEnd: null,
